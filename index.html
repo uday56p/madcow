@@ -1,0 +1,1303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Complete Body Aesthetics — 150kg SQ / 180kg DL / 120kg BP</title>
+<meta name="theme-color" content="#4a148c" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BodyDev">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<style>
+:root {
+  --primary: #4a148c;
+  --primary-light: #7c43bd;
+  --dl: #1a237e;
+  --bp: #c2185b;
+  --sq: #2e7d32;
+  --abs: #00bcd4;
+  --arms: #ff9800;
+  --back: #795548;
+  --shoulders: #9c27b0;
+  --hamstrings: #009688;
+  --neck: #607d8b;
+  
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #263238;
+  
+  --radius: 16px;
+  --shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  padding: 16px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-bottom: 120px;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, #12005e, #4a148c);
+  color: white;
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.header h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.header .sub {
+  font-size: 0.875rem;
+  opacity: 0.9;
+  line-height: 1.4;
+}
+
+/* Goal indicators */
+.goal-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.goal-badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.goal-sq { background: rgba(46, 125, 50, 0.2); color: #e8f5e9; border: 1px solid rgba(46, 125, 50, 0.3); }
+.goal-dl { background: rgba(26, 35, 126, 0.2); color: #e8eaf6; border: 1px solid rgba(26, 35, 126, 0.3); }
+.goal-bp { background: rgba(194, 24, 91, 0.2); color: #fce4ec; border: 1px solid rgba(194, 24, 91, 0.3); }
+
+/* Muscle group tags */
+.muscle-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.tag-abs { background: rgba(0, 188, 212, 0.2); color: #006064; }
+.tag-arms { background: rgba(255, 152, 0, 0.2); color: #e65100; }
+.tag-back { background: rgba(121, 85, 72, 0.2); color: #4e342e; }
+.tag-shoulders { background: rgba(156, 39, 176, 0.2); color: #6a1b9a; }
+.tag-hamstrings { background: rgba(0, 150, 136, 0.2); color: #004d40; }
+.tag-neck { background: rgba(96, 125, 139, 0.2); color: #37474f; }
+.tag-chest { background: rgba(194, 24, 91, 0.2); color: #880e4f; }
+.tag-glutes { background: rgba(156, 39, 176, 0.2); color: #6a1b9a; }
+.tag-calves { background: rgba(2, 119, 189, 0.2); color: #01579b; }
+
+/* Week selector */
+.week-selector {
+  display: flex;
+  overflow-x: auto;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+}
+
+.week-tab {
+  min-width: 50px;
+  padding: 10px;
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.week-tab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.week-tab.completed {
+  background: rgba(76, 175, 80, 0.1);
+  border-color: #4caf50;
+}
+
+.week-tab.failed {
+  background: rgba(244, 67, 54, 0.1);
+  border-color: #f44336;
+}
+
+/* Main lifts */
+.main-lift {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+
+.lift-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.lift-header h3 {
+  margin: 0;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* PR controls */
+.pr-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.pr-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.pr-btn:hover {
+  transform: translateY(-2px);
+}
+
+.pr-btn.ok { background: #2196f3; color: white; }
+.pr-btn.easy { background: #4caf50; color: white; }
+.pr-btn.fail { background: #f44336; color: white; }
+.pr-btn.active { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+
+/* Sets */
+.sets {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0;
+  margin-bottom: 12px;
+}
+
+.set {
+  min-width: 70px;
+  padding: 10px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.set .label {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+}
+
+.set .value {
+  font-weight: 900;
+  font-size: 1.1rem;
+  margin-top: 4px;
+}
+
+/* Accessory Section */
+.accessory-section {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+
+.accessory-section h4 {
+  margin: 0 0 16px 0;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* Accessory grid */
+.accessory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.accessory-card {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 12px;
+  transition: transform 0.2s;
+}
+
+.accessory-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.accessory-card strong {
+  display: block;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.accessory-card .details {
+  font-size: 0.8rem;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* Neck work special */
+.neck-work {
+  background: linear-gradient(135deg, #eceff1, #cfd8dc);
+  border: 2px solid #78909c;
+  grid-column: 1 / -1;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Control Buttons */
+.control-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  display: flex;
+  gap: 8px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 12px 16px;
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.control-btn {
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.control-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.control-btn.reset { background: #f44336; color: white; }
+.control-btn.export { background: #2196f3; color: white; }
+.control-btn.import { background: #4caf50; color: white; }
+
+/* Install Button */
+.install-btn {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #4a148c, #7c43bd);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 1001;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: none;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3); }
+  50% { box-shadow: 0 4px 20px rgba(74, 20, 140, 0.6); }
+  100% { box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  body {
+    padding: 12px;
+    padding-bottom: 100px;
+  }
+  
+  .accessory-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .control-buttons {
+    bottom: 10px;
+    padding: 10px;
+  }
+  
+  .control-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .install-btn {
+    bottom: 70px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.week-content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  text-align: center;
+  max-width: 90%;
+  font-size: 0.9rem;
+}
+
+.toast.show {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="header">
+    <h1>Complete Body Development</h1>
+    <div class="sub">Full body aesthetics • Adaptive auto-programming • 16 weeks</div>
+    <div class="goal-indicators">
+      <span class="goal-badge goal-sq">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <rect x="2" y="2" width="8" height="8" fill="currentColor"/>
+        </svg>
+        150kg SQ Goal
+      </span>
+      <span class="goal-badge goal-dl">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <path d="M2,10 L10,10 L10,2 L2,2 Z" fill="currentColor"/>
+        </svg>
+        180kg DL Goal
+      </span>
+      <span class="goal-badge goal-bp">
+        <svg width="12" height="12" viewBox="0 0 12 12">
+          <circle cx="6" cy="6" r="4" fill="currentColor"/>
+        </svg>
+        120kg BP Goal
+      </span>
+    </div>
+  </div>
+
+  <div class="week-selector" id="weekSelector"></div>
+
+  <div id="weekContent"></div>
+
+  <div class="footer">
+    <p>💪 Monday: Volume • Wednesday: Light + Accessories • Friday: PR + Minimal</p>
+    <p>🍗 Nutrition: 1,700 kcal (Mon-Fri) • Fast Saturday • 2,500 kcal Sunday refeed • 110g protein daily</p>
+  </div>
+</div>
+
+<div class="control-buttons">
+  <button class="control-btn reset" onclick="window.resetProgram()">🔄 Reset</button>
+  <button class="control-btn export" onclick="window.exportData()">💾 Export</button>
+  <button class="control-btn import" onclick="window.importData()">📥 Import</button>
+</div>
+
+<button id="installButton" class="install-btn">📱 Add to Home Screen</button>
+
+<div id="toast" class="toast"></div>
+
+<script>
+'use strict';
+
+// ==================== PROGRAM DATA ====================
+// These form the "Ideal Path" (Linear Progression)
+const AGGRESSIVE_BASE = {
+  sq: [108, 110, 112.5, 115, 117.5, 120, 122.5, 125, 127.5, 130, 132.5, 135, 137.5, 140, 142.5, 145],
+  bp: [86, 88, 90, 92.5, 95, 97.5, 100, 102.5, 104, 105.5, 107, 108.5, 110, 111.5, 113, 115],
+  dl: [126, 130, 134, 138, 142, 146, 150, 154, 157, 160, 162, 164, 166, 168, 170, 172.5]
+};
+
+// ==================== COMPLETE ACCESSORY WORK ====================
+const ACCESSORY_WORK = {
+  monday: [
+    // Minimal accessories (volume day already demanding)
+    {
+      name: "Pull-ups / Lat Pulldown",
+      sets: "3x8-12",
+      focus: "Vertical pull",
+      tags: ["back"]
+    },
+    {
+      name: "Face Pulls",
+      sets: "3x15-20",
+      focus: "Rear delts",
+      tags: ["shoulders", "back"]
+    },
+    {
+      name: "Plank",
+      sets: "3x60s",
+      focus: "Core stability",
+      tags: ["abs"]
+    }
+  ],
+  
+  wednesday: [
+    // NECK WORK (always on Wednesday)
+    {
+      name: "Neck Flexion",
+      sets: "3x15-20",
+      focus: "Forward (with band/plate)",
+      tags: ["neck"],
+      special: "neck"
+    },
+    {
+      name: "Neck Extension",
+      sets: "3x15-20",
+      focus: "Backward (with band)",
+      tags: ["neck"],
+      special: "neck"
+    },
+    {
+      name: "Lateral Neck Raises",
+      sets: "3x15-20 each side",
+      focus: "Side neck muscles",
+      tags: ["neck"],
+      special: "neck"
+    },
+    {
+      name: "Neck Rotation",
+      sets: "3x15-20 each way",
+      focus: "Rotational stability",
+      tags: ["neck"],
+      special: "neck"
+    },
+    
+    // MAIN ACCESSORIES (Wednesday is the primary accessory day)
+    {
+      name: "Incline DB Press",
+      sets: "3x8-10",
+      focus: "Upper chest",
+      tags: ["chest"]
+    },
+    {
+      name: "Bent-over Rows",
+      sets: "3x8-10",
+      focus: "Back thickness",
+      tags: ["back"]
+    },
+    {
+      name: "Lateral Raises",
+      sets: "3x15-20",
+      focus: "Shoulder width",
+      tags: ["shoulders"]
+    },
+    {
+      name: "Hammer Curls",
+      sets: "3x10-12",
+      focus: "Brachialis",
+      tags: ["arms"]
+    },
+    {
+      name: "Tricep Pushdown",
+      sets: "3x10-12",
+      focus: "Triceps",
+      tags: ["arms"]
+    },
+    {
+      name: "Leg Curls",
+      sets: "3x10-12",
+      focus: "Hamstrings",
+      tags: ["hamstrings"]
+    },
+    {
+      name: "Standing Calf Raise",
+      sets: "3x12-15",
+      focus: "Calves",
+      tags: ["calves"]
+    },
+    {
+      name: "Hanging Leg Raises",
+      sets: "3x10-15",
+      focus: "Lower abs",
+      tags: ["abs"]
+    }
+  ],
+  
+  friday: [
+    // MINIMAL accessories only (energy spent on heavy PRs)
+    {
+      name: "Romanian Deadlifts",
+      sets: "3x8-10",
+      focus: "Hamstrings, glutes",
+      tags: ["hamstrings", "glutes"]
+    },
+    {
+      name: "Farmer's Walk",
+      sets: "3x40m",
+      focus: "Grip, traps, core",
+      tags: ["back", "arms"]
+    },
+    {
+      name: "Seated Calf Raise",
+      sets: "3x12-15",
+      focus: "Calves",
+      tags: ["calves"]
+    }
+  ]
+};
+
+// ==================== STATE MANAGEMENT WITH REALISTIC ADAPTIVE LOGIC ====================
+const STORAGE_KEY = 'complete_body_program';
+let currentWeek = 0;
+
+function roundToNearest(num) {
+  return Math.round(num / 2.5) * 2.5;
+}
+
+class ProgramState {
+  constructor() {
+    this.load();
+  }
+  
+  load() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        const data = JSON.parse(saved);
+        if (data.weeks && data.weeks.length === 16) {
+          this.data = data;
+          // Ensure adjustmentFactors exist (migration)
+          if (!this.data.adjustmentFactors) {
+            this.data.adjustmentFactors = { sq: 1.0, bp: 1.0, dl: 1.0 };
+            this.save();
+          }
+          return;
+        }
+      } catch (e) {}
+    }
+    
+    // Create fresh state
+    this.data = {
+      version: '2.0',
+      created: new Date().toISOString(),
+      weeks: Array.from({length: 16}, (_, i) => ({
+        week: i + 1,
+        pr: {
+          sq: AGGRESSIVE_BASE.sq[i],
+          bp: AGGRESSIVE_BASE.bp[i],
+          dl: AGGRESSIVE_BASE.dl[i]
+        },
+        status: { sq: null, bp: null, dl: null }
+      })),
+      adjustmentFactors: { sq: 1.0, bp: 1.0, dl: 1.0 }
+    };
+  }
+  
+  save() {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
+  }
+  
+  // ===== REALISTIC ADAPTIVE LOGIC =====
+  updatePR(weekIndex, lift, action) {
+    const week = this.data.weeks[weekIndex];
+    week.status[lift] = action;
+    
+    if (weekIndex < 15) {
+      const nextWeek = this.data.weeks[weekIndex + 1];
+      const currentWeight = week.pr[lift];
+      const originalNextWeight = AGGRESSIVE_BASE[lift][weekIndex + 1];
+      const currentFactor = this.data.adjustmentFactors[lift];
+      
+      // Lift-specific realistic adjustments
+      const config = {
+        sq: { failDrop: 0.05, easyBoost: 0.025, minStep: 2.5 },
+        bp: { failDrop: 0.05, easyBoost: 0.02, minStep: 2.5 }, // Smaller boost for bench
+        dl: { failDrop: 0.05, easyBoost: 0.03, minStep: 5.0 }  // Deadlift can handle bigger jumps
+      }[lift];
+      
+      switch(action) {
+        case 'fail':
+          // Failed: Reduce next week significantly and lower the trajectory
+          const failReduction = Math.max(config.minStep, currentWeight * config.failDrop);
+          
+          // Next week is Current - Drop. 
+          nextWeek.pr[lift] = roundToNearest(currentWeight - failReduction);
+          
+          // Lower future trajectory factor (recover mode)
+          this.data.adjustmentFactors[lift] = currentFactor * 0.95;
+          break;
+          
+        case 'ok':
+          // OK: Maintain current trajectory. 
+          // CRITICAL FIX: If we are already above base (Factor > 1), keep that advantage.
+          // Don't revert to originalNextWeight, revert to originalNextWeight * Factor.
+          
+          nextWeek.pr[lift] = roundToNearest(originalNextWeight * currentFactor);
+          
+          // If we were recovering (Factor < 1), slowly creep back up
+          if (currentFactor < 1.0) {
+            this.data.adjustmentFactors[lift] = Math.min(1.0, currentFactor * 1.02);
+          }
+          break;
+          
+        case 'easy':
+          // Easy: Increase next week more than planned AND boost future trajectory.
+          // 1. Calculate the 'Easy' jump
+          const easyIncrease = Math.max(config.minStep, currentWeight * config.easyBoost);
+          const boostedNext = currentWeight + easyIncrease;
+          
+          // 2. Compare with what the plan would have been. Take the higher.
+          const plannedNext = originalNextWeight * currentFactor;
+          nextWeek.pr[lift] = roundToNearest(Math.max(boostedNext, plannedNext));
+          
+          // 3. Permanently boost the factor for all future weeks to prevent plateau
+          // This ensures we aim higher than the original goal
+          this.data.adjustmentFactors[lift] = currentFactor * 1.02; // 2% permanent boost
+          break;
+      }
+      
+      // Apply the new adjustment factor to ALL future weeks
+      this.recalculateFutureWeeks(weekIndex + 1, lift);
+    }
+    
+    this.save();
+  }
+  
+  recalculateFutureWeeks(fromWeekIndex, lift) {
+    const adjustment = this.data.adjustmentFactors[lift];
+    
+    for (let i = fromWeekIndex + 1; i < 16; i++) {
+      // Base calculation: Original Plan * Adjustment Factor
+      // This scales the entire program up or down based on performance
+      const original = AGGRESSIVE_BASE[lift][i];
+      const newTarget = original * adjustment;
+      
+      this.data.weeks[i].pr[lift] = roundToNearest(newTarget);
+    }
+  }
+  
+  resetAdjustmentFactors() {
+    this.data.adjustmentFactors = { sq: 1.0, bp: 1.0, dl: 1.0 };
+  }
+}
+
+// ==================== UI RENDERER ====================
+class UIRenderer {
+  constructor(state) {
+    this.state = state;
+    this.weekSelector = document.getElementById('weekSelector');
+    this.weekContent = document.getElementById('weekContent');
+  }
+  
+  render() {
+    this.renderWeekSelector();
+    this.renderWeekContent(currentWeek);
+  }
+  
+  renderWeekSelector() {
+    this.weekSelector.innerHTML = '';
+    
+    for (let i = 0; i < 16; i++) {
+      const week = this.state.data.weeks[i];
+      const tab = document.createElement('div');
+      
+      let tabClass = 'week-tab';
+      if (i === currentWeek) tabClass += ' active';
+      
+      const hasStatus = week.status.sq || week.status.bp || week.status.dl;
+      if (hasStatus) {
+        const allDone = week.status.sq && week.status.bp && week.status.dl;
+        const hasFail = week.status.sq === 'fail' || week.status.bp === 'fail' || week.status.dl === 'fail';
+        
+        if (allDone && !hasFail) {
+          tabClass += ' completed';
+        } else if (hasFail) {
+          tabClass += ' failed';
+        }
+      }
+      
+      tab.className = tabClass;
+      tab.textContent = week.week;
+      tab.onclick = () => {
+        currentWeek = i;
+        this.render();
+      };
+      this.weekSelector.appendChild(tab);
+    }
+  }
+  
+  renderWeekContent(weekIndex) {
+    const week = this.state.data.weeks[weekIndex];
+    
+    // Calculate weights
+    const monSq = roundToNearest(week.pr.sq * 0.92);
+    const monBp = roundToNearest(week.pr.bp * 0.92);
+    const monRow = roundToNearest(week.pr.dl * 0.6);
+    
+    const wedSq = roundToNearest(week.pr.sq * 0.7);
+    const wedOhp = roundToNearest(week.pr.bp * 0.6);
+    const wedDl = roundToNearest(week.pr.dl * 0.6);
+    
+    // Calculate projected 1RMs
+    const projectedSq = Math.round(week.pr.sq / 0.9);
+    const projectedBp = Math.round(week.pr.bp / 0.9);
+    const projectedDl = Math.round(week.pr.dl / 0.9);
+    
+    // Show adjustment factor info
+    const adjSq = (this.state.data.adjustmentFactors.sq * 100 - 100).toFixed(1);
+    const adjBp = (this.state.data.adjustmentFactors.bp * 100 - 100).toFixed(1);
+    const adjDl = (this.state.data.adjustmentFactors.dl * 100 - 100).toFixed(1);
+    
+    this.weekContent.innerHTML = `
+      <div style="background: linear-gradient(135deg, #f3e5f5, #e8eaf6); border-radius: var(--radius); padding: 16px; margin-bottom: 20px;">
+        <h2 style="margin: 0; color: var(--primary);">Week ${week.week}</h2>
+        <div style="font-size: 0.875rem; color: #666; margin-top: 8px;">
+          <div style="margin-bottom: 4px;">
+            <strong>Goals:</strong> 
+            <span style="color: var(--sq); font-weight: 600;">150kg SQ</span> • 
+            <span style="color: var(--dl); font-weight: 600;">180kg DL</span> • 
+            <span style="color: var(--bp); font-weight: 600;">120kg BP</span>
+          </div>
+          <div>
+            <strong>Current Projected 1RM:</strong> 
+            <span style="color: var(--sq); font-weight: 600;">${projectedSq}kg SQ</span> / 
+            <span style="color: var(--dl); font-weight: 600;">${projectedDl}kg DL</span> / 
+            <span style="color: var(--bp); font-weight: 600;">${projectedBp}kg BP</span>
+          </div>
+          <div style="margin-top: 8px; font-size: 0.75rem; background: rgba(0,0,0,0.05); padding: 6px; border-radius: 6px;">
+            <strong>Adaptive Status:</strong> 
+            SQ: ${adjSq > 0 ? '+' : ''}${adjSq}% | BP: ${adjBp > 0 ? '+' : ''}${adjBp}% | DL: ${adjDl > 0 ? '+' : ''}${adjDl}%
+          </div>
+        </div>
+      </div>
+      
+      <div style="background: linear-gradient(135deg, #fff8e1, #ffecb3); border-radius: var(--radius); padding: 12px; margin-bottom: 16px; font-size: 0.8rem;">
+        <strong>💡 How to rate your triple:</strong>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px;">
+          <div style="background: #4caf50; color: white; padding: 6px; border-radius: 6px; text-align: center;">
+            <strong>EASY</strong><br>
+            RPE ≤7<br>
+            3+ reps left
+          </div>
+          <div style="background: #2196f3; color: white; padding: 6px; border-radius: 6px; text-align: center;">
+            <strong>OK</strong><br>
+            RPE 8-9<br>
+            1-2 reps left
+          </div>
+          <div style="background: #f44336; color: white; padding: 6px; border-radius: 6px; text-align: center;">
+            <strong>FAIL</strong><br>
+            RPE ≥10<br>
+            Missed reps
+          </div>
+        </div>
+      </div>
+      
+      <div class="main-lift">
+        <div class="lift-header">
+          <h3>📈 MONDAY — Volume Day (5×5)</h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--sq);">Squat: 5×5 @ ${monSq}kg</div>
+          <div class="sets">
+            ${[0.5, 0.625, 0.75, 0.875, 1].map((p, i) => `
+              <div class="set">
+                <div class="label">Set ${i+1}</div>
+                <div class="value">${roundToNearest(monSq * p)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="pr-controls" data-lift="sq">
+            <button class="pr-btn ok ${week.status.sq === 'ok' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'sq', 'ok')">OK</button>
+            <button class="pr-btn easy ${week.status.sq === 'easy' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'sq', 'easy')">EASY</button>
+            <button class="pr-btn fail ${week.status.sq === 'fail' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'sq', 'fail')">FAIL</button>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--bp);">Bench Press: 5×5 @ ${monBp}kg</div>
+          <div class="sets">
+            ${[0.5, 0.625, 0.75, 0.875, 1].map((p, i) => `
+              <div class="set">
+                <div class="label">Set ${i+1}</div>
+                <div class="value">${roundToNearest(monBp * p)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div class="pr-controls" data-lift="bp">
+            <button class="pr-btn ok ${week.status.bp === 'ok' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'bp', 'ok')">OK</button>
+            <button class="pr-btn easy ${week.status.bp === 'easy' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'bp', 'easy')">EASY</button>
+            <button class="pr-btn fail ${week.status.bp === 'fail' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'bp', 'fail')">FAIL</button>
+          </div>
+        </div>
+        
+        <div>
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--back);">Barbell Row: 5×5 @ ${monRow}kg</div>
+          <div class="sets">
+            ${[0.5, 0.625, 0.75, 0.875, 1].map((p, i) => `
+              <div class="set">
+                <div class="label">Set ${i+1}</div>
+                <div class="value">${roundToNearest(monRow * p)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      
+      <div class="accessory-section">
+        <h4>💪 MONDAY Accessories (Minimal)</h4>
+        <div class="accessory-grid">
+          ${ACCESSORY_WORK.monday.map(acc => `
+            <div class="accessory-card">
+              <strong>${acc.name}</strong>
+              <div class="details">${acc.sets} • ${acc.focus}</div>
+              ${acc.tags.map(tag => `<span class="muscle-tag tag-${tag}">${tag}</span>`).join('')}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <div class="main-lift">
+        <div class="lift-header">
+          <h3>🔄 WEDNESDAY — Light Day (4×4)</h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--sq);">Squat (Light): 4×4 @ ${wedSq}kg</div>
+          <div class="sets">
+            ${[0.5, 0.625, 0.75, 0.75].map((p, i) => `
+              <div class="set">
+                <div class="label">Set ${i+1}</div>
+                <div class="value">${roundToNearest(wedSq * p)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--shoulders);">Overhead Press: 4×4 @ ${wedOhp}kg</div>
+          <div class="sets">
+            ${[0.5, 0.625, 0.75, 0.75].map((p, i) => `
+              <div class="set">
+                <div class="label">Set ${i+1}</div>
+                <div class="value">${roundToNearest(wedOhp * p)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div>
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--dl);">Deadlift (Light): 4×4 @ ${wedDl}kg</div>
+          <div class="sets">
+            ${[0.5, 0.625, 0.75, 0.75].map((p, i) => `
+              <div class="set">
+                <div class="label">Set ${i+1}</div>
+                <div class="value">${roundToNearest(wedDl * p)}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+      
+      <div class="accessory-section">
+        <h4>🏋️‍♂️ WEDNESDAY — Main Accessory Day</h4>
+        <div style="font-size: 0.875rem; color: #666; margin-bottom: 16px; padding: 8px; background: #f5f5f5; border-radius: 8px;">
+          <strong>Energy Management:</strong> Light compounds = more energy for hypertrophy accessories.
+        </div>
+        <div class="accessory-grid">
+          ${ACCESSORY_WORK.wednesday.map(acc => `
+            <div class="accessory-card ${acc.special === 'neck' ? 'neck-work' : ''}">
+              <strong>${acc.name}</strong>
+              <div class="details">${acc.sets} • ${acc.focus}</div>
+              ${acc.tags.map(tag => `<span class="muscle-tag tag-${tag}">${tag}</span>`).join('')}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <div class="main-lift">
+        <div class="lift-header">
+          <h3>🏆 FRIDAY — PR Day (Triple + Backoff)</h3>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--sq);">Squat PR: ${week.pr.sq}kg × 3</div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 0.875rem; color: #666; margin-bottom: 8px;">Warm-up sets:</div>
+            <div class="sets">
+              ${[0.5, 0.625, 0.75, 0.875].map((p, i) => `
+                <div class="set">
+                  <div class="label">Warm ${i+1}</div>
+                  <div class="value">${roundToNearest(week.pr.sq * p)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="pr-controls" data-lift="sq">
+            <button class="pr-btn ok ${week.status.sq === 'ok' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'sq', 'ok')">OK</button>
+            <button class="pr-btn easy ${week.status.sq === 'easy' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'sq', 'easy')">EASY</button>
+            <button class="pr-btn fail ${week.status.sq === 'fail' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'sq', 'fail')">FAIL</button>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 12px;">
+            <div class="set" style="background: #e3f2fd;">
+              <div class="label">PR SET</div>
+              <div class="value">${week.pr.sq}</div>
+              <div style="font-size: 0.75rem; color: #1976d2;">×3 reps</div>
+            </div>
+            <div class="set">
+              <div class="label">BACKOFF</div>
+              <div class="value">${roundToNearest(week.pr.sq * 0.75)}</div>
+              <div style="font-size: 0.75rem; color: #666;">×8 reps</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--bp);">Bench Press PR: ${week.pr.bp}kg × 3</div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 0.875rem; color: #666; margin-bottom: 8px;">Warm-up sets:</div>
+            <div class="sets">
+              ${[0.5, 0.625, 0.75, 0.875].map((p, i) => `
+                <div class="set">
+                  <div class="label">Warm ${i+1}</div>
+                  <div class="value">${roundToNearest(week.pr.bp * p)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="pr-controls" data-lift="bp">
+            <button class="pr-btn ok ${week.status.bp === 'ok' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'bp', 'ok')">OK</button>
+            <button class="pr-btn easy ${week.status.bp === 'easy' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'bp', 'easy')">EASY</button>
+            <button class="pr-btn fail ${week.status.bp === 'fail' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'bp', 'fail')">FAIL</button>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 12px;">
+            <div class="set" style="background: #fce4ec;">
+              <div class="label">PR SET</div>
+              <div class="value">${week.pr.bp}</div>
+              <div style="font-size: 0.75rem; color: #c2185b;">×3 reps</div>
+            </div>
+            <div class="set">
+              <div class="label">BACKOFF</div>
+              <div class="value">${roundToNearest(week.pr.bp * 0.75)}</div>
+              <div style="font-size: 0.75rem; color: #666;">×8 reps</div>
+            </div>
+          </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+          <div style="font-weight: 700; margin-bottom: 8px; color: var(--dl);">Deadlift PR: ${week.pr.dl}kg × 3</div>
+          <div style="margin-bottom: 12px;">
+            <div style="font-size: 0.875rem; color: #666; margin-bottom: 8px;">Warm-up sets:</div>
+            <div class="sets">
+              ${[0.5, 0.625, 0.75, 0.875].map((p, i) => `
+                <div class="set">
+                  <div class="label">Warm ${i+1}</div>
+                  <div class="value">${roundToNearest(week.pr.dl * p)}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          <div class="pr-controls" data-lift="dl">
+            <button class="pr-btn ok ${week.status.dl === 'ok' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'dl', 'ok')">OK</button>
+            <button class="pr-btn easy ${week.status.dl === 'easy' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'dl', 'easy')">EASY</button>
+            <button class="pr-btn fail ${week.status.dl === 'fail' ? 'active' : ''}" onclick="app.setPR(${weekIndex}, 'dl', 'fail')">FAIL</button>
+          </div>
+          <div style="margin-top: 12px; display: flex; gap: 12px;">
+            <div class="set" style="background: #e8eaf6;">
+              <div class="label">PR SET</div>
+              <div class="value">${week.pr.dl}</div>
+              <div style="font-size: 0.75rem; color: #1a237e;">×3 reps</div>
+            </div>
+            <div class="set">
+              <div class="label">BACKOFF</div>
+              <div class="value">${roundToNearest(week.pr.dl * 0.75)}</div>
+              <div style="font-size: 0.75rem; color: #666;">×8 reps</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="accessory-section">
+        <h4>🔥 FRIDAY Accessories (Minimal)</h4>
+        <div class="accessory-grid">
+          ${ACCESSORY_WORK.friday.map(acc => `
+            <div class="accessory-card">
+              <strong>${acc.name}</strong>
+              <div class="details">${acc.sets} • ${acc.focus}</div>
+              ${acc.tags.map(tag => `<span class="muscle-tag tag-${tag}">${tag}</span>`).join('')}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <div style="background: linear-gradient(135deg, #e0f7fa, #b2ebf2); border-radius: var(--radius); padding: 16px; margin-top: 20px; font-size: 0.875rem;">
+        <strong>📋 Week ${week.week} Summary:</strong>
+        <div style="margin-top: 8px; color: #006064;">
+          • <strong>Monday:</strong> Volume focus, minimal accessories<br>
+          • <strong>Wednesday:</strong> Light compounds + MAIN accessory day (12 exercises)<br>
+          • <strong>Friday:</strong> Heavy PRs + minimal accessories (3 exercises)<br>
+          • Protein: 110g+ daily for muscle retention<br>
+          • Sleep: 8+ hours for recovery
+        </div>
+      </div>
+    `;
+  }
+  
+  showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+      toast.classList.remove('show');
+    }, 3000);
+  }
+}
+
+// ==================== MAIN APP ====================
+class App {
+  constructor() {
+    this.state = new ProgramState();
+    this.ui = new UIRenderer(this.state);
+  }
+  
+  init() {
+    this.ui.render();
+    
+    setTimeout(() => {
+      if (!localStorage.getItem('welcome_shown')) {
+        this.ui.showToast('💪 Realistic adaptive logic loaded! Click EASY/OK/FAIL to adjust weights.');
+        localStorage.setItem('welcome_shown', 'true');
+      }
+    }, 1000);
+  }
+  
+  setPR(weekIndex, lift, action) {
+    this.state.updatePR(weekIndex, lift, action);
+    this.ui.render();
+    
+    const liftNames = { sq: 'Squat', bp: 'Bench Press', dl: 'Deadlift' };
+    const messages = {
+      fail: `${liftNames[lift]} FAIL. Weight reduced & trajectory adjusted.`,
+      ok: `${liftNames[lift]} OK. Maintained trajectory.`,
+      easy: `${liftNames[lift]} EASY. Weight increased & future goals boosted.`
+    };
+    
+    this.ui.showToast(messages[action]);
+    
+    // Auto-advance to next week if all lifts done
+    const week = this.state.data.weeks[weekIndex];
+    if (week.status.sq && week.status.bp && week.status.dl && weekIndex < 15) {
+      currentWeek = weekIndex + 1;
+      setTimeout(() => this.ui.render(), 500);
+    }
+  }
+}
+
+// Initialize app
+const app = new App();
+document.addEventListener('DOMContentLoaded', () => app.init());
+
+// Export/Import functionality
+window.exportData = function() {
+  const data = JSON.stringify(app.state.data, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `complete_body_program_${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  app.ui.showToast('Data exported!');
+};
+
+window.importData = function() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.json';
+  input.onchange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        const imported = JSON.parse(e.target.result);
+        if (confirm('Import this data? Current progress will be replaced.')) {
+          app.state.data = imported;
+          // Ensure adjustmentFactors exist in imported data
+          if (!app.state.data.adjustmentFactors) {
+            app.state.data.adjustmentFactors = { sq: 1.0, bp: 1.0, dl: 1.0 };
+          }
+          app.state.save();
+          app.ui.render();
+          app.ui.showToast('Data imported!');
+        }
+      } catch (error) {
+        alert('Invalid file format');
+      }
+    };
+    reader.readAsText(file);
+  };
+  input.click();
+};
+
+window.resetProgram = function() {
+  if (confirm('Reset all progress to Week 1?')) {
+    app.state = new ProgramState();
+    app.state.resetAdjustmentFactors();
+    currentWeek = 0;
+    app.ui.render();
+    app.ui.showToast('Program reset! Adjustment factors cleared.');
+  }
+};
+
+// ==================== PWA SETUP ====================
+// Generate manifest dynamically
+const manifest = {
+  "name": "Complete Body Development",
+  "short_name": "BodyDev",
+  "description": "150kg SQ / 180kg DL / 120kg BP in 16 weeks",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#4a148c",
+  "theme_color": "#4a148c",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a148c'/%3E%3Cpath d='M30,30 L70,30 L70,70 L30,70 Z' fill='none' stroke='white' stroke-width='8'/%3E%3Ccircle cx='50' cy='40' r='6' fill='white'/%3E%3Ccircle cx='50' cy='60' r='6' fill='white'/%3E%3C/svg%3E",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a148c'/%3E%3Cpath d='M30,30 L70,30 L70,70 L30,70 Z' fill='none' stroke='white' stroke-width='8'/%3E%3Ccircle cx='50' cy='40' r='6' fill='white'/%3E%3Ccircle cx='50' cy='60' r='6' fill='white'/%3E%3C/svg%3E",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+};
+
+// Add manifest to page
+const manifestElement = document.createElement('link');
+manifestElement.rel = 'manifest';
+manifestElement.href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify(manifest));
+document.head.appendChild(manifestElement);
+
+// Add iOS icon
+const iconLink = document.createElement('link');
+iconLink.rel = 'apple-touch-icon';
+iconLink.href = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a148c'/%3E%3Cpath d='M30,30 L70,30 L70,70 L30,70 Z' fill='none' stroke='white' stroke-width='8'/%3E%3Ccircle cx='50' cy='40' r='6' fill='white'/%3E%3Ccircle cx='50' cy='60' r='6' fill='white'/%3E%3C/svg%3E";
+document.head.appendChild(iconLink);
+
+// Service Worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(`
+      self.addEventListener('install', function(event) {
+        event.waitUntil(self.skipWaiting());
+      });
+      self.addEventListener('activate', function(event) {
+        event.waitUntil(self.clients.claim());
+      });
+    `)).catch(function(error) {
+      console.log('ServiceWorker registration failed:', error);
+    });
+  });
+}
+
+// Prompt for installation
+let deferredPrompt;
+const installBtn = document.getElementById('installButton');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installBtn.style.display = 'block';
+  
+  installBtn.addEventListener('click', () => {
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        app.ui.showToast('✅ App installed to home screen!');
+      } else {
+        setTimeout(() => {
+          installBtn.style.display = 'block';
+        }, 5000);
+      }
+      deferredPrompt = null;
+    });
+  });
+});
+
+window.addEventListener('appinstalled', () => {
+  installBtn.style.display = 'none';
+});
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  installBtn.style.display = 'none';
+}
+</script>
+</body>
+</html>
