@@ -48,7 +48,6 @@ body {
   padding-bottom: 120px;
 }
 
-/* Header */
 .header {
   background: linear-gradient(135deg, #12005e, #4a148c);
   color: white;
@@ -70,7 +69,6 @@ body {
   line-height: 1.4;
 }
 
-/* Goal indicators */
 .goal-indicators {
   display: flex;
   flex-wrap: wrap;
@@ -92,7 +90,6 @@ body {
 .goal-dl { background: rgba(26, 35, 126, 0.2); color: #e8eaf6; border: 1px solid rgba(26, 35, 126, 0.3); }
 .goal-bp { background: rgba(194, 24, 91, 0.2); color: #fce4ec; border: 1px solid rgba(194, 24, 91, 0.3); }
 
-/* Muscle group tags */
 .muscle-tag {
   display: inline-block;
   padding: 4px 10px;
@@ -113,7 +110,6 @@ body {
 .tag-glutes { background: rgba(156, 39, 176, 0.2); color: #6a1b9a; }
 .tag-calves { background: rgba(2, 119, 189, 0.2); color: #01579b; }
 
-/* Week selector */
 .week-selector {
   display: flex;
   overflow-x: auto;
@@ -150,7 +146,7 @@ body {
   border-color: #f44336;
 }
 
-/* Main lifts */
+
 .main-lift {
   background: white;
   border-radius: var(--radius);
@@ -172,7 +168,7 @@ body {
   font-size: 1.1rem;
 }
 
-/* PR controls */
+
 .pr-controls {
   display: flex;
   gap: 6px;
@@ -197,7 +193,6 @@ body {
 .pr-btn.fail { background: #f44336; color: white; }
 .pr-btn.active { transform: scale(1.1); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
 
-/* Sets */
 .sets {
   display: flex;
   gap: 8px;
@@ -227,7 +222,6 @@ body {
   margin-top: 4px;
 }
 
-/* Accessory Section */
 .accessory-section {
   background: white;
   border-radius: var(--radius);
@@ -242,7 +236,6 @@ body {
   font-size: 1.1rem;
 }
 
-/* Accessory grid */
 .accessory-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -276,14 +269,12 @@ body {
   line-height: 1.4;
 }
 
-/* Neck work special */
 .neck-work {
   background: linear-gradient(135deg, #eceff1, #cfd8dc);
   border: 2px solid #78909c;
   grid-column: 1 / -1;
 }
 
-/* Footer */
 .footer {
   text-align: center;
   font-size: 0.875rem;
@@ -293,7 +284,6 @@ body {
   border-top: 1px solid #e0e0e0;
 }
 
-/* Control Buttons */
 .control-buttons {
   position: fixed;
   bottom: 20px;
@@ -333,7 +323,6 @@ body {
 .control-btn.export { background: #2196f3; color: white; }
 .control-btn.import { background: #4caf50; color: white; }
 
-/* Install Button */
 .install-btn {
   position: fixed;
   bottom: 80px;
@@ -356,9 +345,7 @@ body {
   0% { box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3); }
   50% { box-shadow: 0 4px 20px rgba(74, 20, 140, 0.6); }
   100% { box-shadow: 0 4px 12px rgba(74, 20, 140, 0.3); }
-}
 
-/* Responsive */
 @media (max-width: 480px) {
   body {
     padding: 12px;
@@ -386,7 +373,7 @@ body {
   }
 }
 
-/* Animation */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -396,7 +383,7 @@ body {
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Toast notification */
+
 .toast {
   position: fixed;
   bottom: 80px;
@@ -471,18 +458,17 @@ body {
 <script>
 'use strict';
 
-// ==================== PROGRAM DATA ====================
-// These form the "Ideal Path" (Linear Progression)
+
 const AGGRESSIVE_BASE = {
   sq: [108, 110, 112.5, 115, 117.5, 120, 122.5, 125, 127.5, 130, 132.5, 135, 137.5, 140, 142.5, 145],
   bp: [86, 88, 90, 92.5, 95, 97.5, 100, 102.5, 104, 105.5, 107, 108.5, 110, 111.5, 113, 115],
   dl: [126, 130, 134, 138, 142, 146, 150, 154, 157, 160, 162, 164, 166, 168, 170, 172.5]
 };
 
-// ==================== COMPLETE ACCESSORY WORK ====================
+
 const ACCESSORY_WORK = {
   monday: [
-    // Minimal accessories (volume day already demanding)
+   
     {
       name: "Pull-ups / Lat Pulldown",
       sets: "3x8-12",
@@ -534,7 +520,7 @@ const ACCESSORY_WORK = {
       special: "neck"
     },
     
-    // MAIN ACCESSORIES (Wednesday is the primary accessory day)
+ 
     {
       name: "Incline DB Press",
       sets: "3x8-10",
@@ -586,7 +572,7 @@ const ACCESSORY_WORK = {
   ],
   
   friday: [
-    // MINIMAL accessories only (energy spent on heavy PRs)
+
     {
       name: "Romanian Deadlifts",
       sets: "3x8-10",
@@ -608,7 +594,7 @@ const ACCESSORY_WORK = {
   ]
 };
 
-// ==================== STATE MANAGEMENT WITH REALISTIC ADAPTIVE LOGIC ====================
+
 const STORAGE_KEY = 'complete_body_program';
 let currentWeek = 0;
 
@@ -628,7 +614,7 @@ class ProgramState {
         const data = JSON.parse(saved);
         if (data.weeks && data.weeks.length === 16) {
           this.data = data;
-          // Ensure adjustmentFactors exist (migration)
+        
           if (!this.data.adjustmentFactors) {
             this.data.adjustmentFactors = { sq: 1.0, bp: 1.0, dl: 1.0 };
             this.save();
@@ -638,7 +624,7 @@ class ProgramState {
       } catch (e) {}
     }
     
-    // Create fresh state
+   
     this.data = {
       version: '2.0',
       created: new Date().toISOString(),
@@ -659,7 +645,6 @@ class ProgramState {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(this.data));
   }
   
-  // ===== REALISTIC ADAPTIVE LOGIC =====
   updatePR(weekIndex, lift, action) {
     const week = this.data.weeks[weekIndex];
     week.status[lift] = action;
@@ -669,56 +654,48 @@ class ProgramState {
       const currentWeight = week.pr[lift];
       const originalNextWeight = AGGRESSIVE_BASE[lift][weekIndex + 1];
       const currentFactor = this.data.adjustmentFactors[lift];
-      
-      // Lift-specific realistic adjustments
+     
       const config = {
         sq: { failDrop: 0.05, easyBoost: 0.025, minStep: 2.5 },
-        bp: { failDrop: 0.05, easyBoost: 0.02, minStep: 2.5 }, // Smaller boost for bench
-        dl: { failDrop: 0.05, easyBoost: 0.03, minStep: 5.0 }  // Deadlift can handle bigger jumps
+        bp: { failDrop: 0.05, easyBoost: 0.02, minStep: 2.5 },
+        dl: { failDrop: 0.05, easyBoost: 0.03, minStep: 5.0 }  
       }[lift];
       
       switch(action) {
         case 'fail':
-          // Failed: Reduce next week significantly and lower the trajectory
+     
           const failReduction = Math.max(config.minStep, currentWeight * config.failDrop);
           
-          // Next week is Current - Drop. 
           nextWeek.pr[lift] = roundToNearest(currentWeight - failReduction);
           
-          // Lower future trajectory factor (recover mode)
           this.data.adjustmentFactors[lift] = currentFactor * 0.95;
           break;
           
         case 'ok':
-          // OK: Maintain current trajectory. 
-          // CRITICAL FIX: If we are already above base (Factor > 1), keep that advantage.
-          // Don't revert to originalNextWeight, revert to originalNextWeight * Factor.
-          
+         
           nextWeek.pr[lift] = roundToNearest(originalNextWeight * currentFactor);
           
-          // If we were recovering (Factor < 1), slowly creep back up
+        
           if (currentFactor < 1.0) {
             this.data.adjustmentFactors[lift] = Math.min(1.0, currentFactor * 1.02);
           }
           break;
           
         case 'easy':
-          // Easy: Increase next week more than planned AND boost future trajectory.
-          // 1. Calculate the 'Easy' jump
+         
           const easyIncrease = Math.max(config.minStep, currentWeight * config.easyBoost);
           const boostedNext = currentWeight + easyIncrease;
           
-          // 2. Compare with what the plan would have been. Take the higher.
+          
           const plannedNext = originalNextWeight * currentFactor;
           nextWeek.pr[lift] = roundToNearest(Math.max(boostedNext, plannedNext));
           
-          // 3. Permanently boost the factor for all future weeks to prevent plateau
-          // This ensures we aim higher than the original goal
-          this.data.adjustmentFactors[lift] = currentFactor * 1.02; // 2% permanent boost
+          
+          this.data.adjustmentFactors[lift] = currentFactor * 1.02;
           break;
       }
       
-      // Apply the new adjustment factor to ALL future weeks
+      
       this.recalculateFutureWeeks(weekIndex + 1, lift);
     }
     
@@ -729,8 +706,7 @@ class ProgramState {
     const adjustment = this.data.adjustmentFactors[lift];
     
     for (let i = fromWeekIndex + 1; i < 16; i++) {
-      // Base calculation: Original Plan * Adjustment Factor
-      // This scales the entire program up or down based on performance
+   
       const original = AGGRESSIVE_BASE[lift][i];
       const newTarget = original * adjustment;
       
@@ -741,9 +717,7 @@ class ProgramState {
   resetAdjustmentFactors() {
     this.data.adjustmentFactors = { sq: 1.0, bp: 1.0, dl: 1.0 };
   }
-}
 
-// ==================== UI RENDERER ====================
 class UIRenderer {
   constructor(state) {
     this.state = state;
@@ -791,7 +765,7 @@ class UIRenderer {
   renderWeekContent(weekIndex) {
     const week = this.state.data.weeks[weekIndex];
     
-    // Calculate weights
+
     const monSq = roundToNearest(week.pr.sq * 0.92);
     const monBp = roundToNearest(week.pr.bp * 0.92);
     const monRow = roundToNearest(week.pr.dl * 0.6);
@@ -799,13 +773,12 @@ class UIRenderer {
     const wedSq = roundToNearest(week.pr.sq * 0.7);
     const wedOhp = roundToNearest(week.pr.bp * 0.6);
     const wedDl = roundToNearest(week.pr.dl * 0.6);
-    
-    // Calculate projected 1RMs
+  
     const projectedSq = Math.round(week.pr.sq / 0.9);
     const projectedBp = Math.round(week.pr.bp / 0.9);
     const projectedDl = Math.round(week.pr.dl / 0.9);
     
-    // Show adjustment factor info
+   
     const adjSq = (this.state.data.adjustmentFactors.sq * 100 - 100).toFixed(1);
     const adjBp = (this.state.data.adjustmentFactors.bp * 100 - 100).toFixed(1);
     const adjDl = (this.state.data.adjustmentFactors.dl * 100 - 100).toFixed(1);
@@ -1114,9 +1087,7 @@ class UIRenderer {
       toast.classList.remove('show');
     }, 3000);
   }
-}
 
-// ==================== MAIN APP ====================
 class App {
   constructor() {
     this.state = new ProgramState();
@@ -1156,11 +1127,10 @@ class App {
   }
 }
 
-// Initialize app
 const app = new App();
 document.addEventListener('DOMContentLoaded', () => app.init());
 
-// Export/Import functionality
+
 window.exportData = function() {
   const data = JSON.stringify(app.state.data, null, 2);
   const blob = new Blob([data], { type: 'application/json' });
@@ -1187,7 +1157,7 @@ window.importData = function() {
         const imported = JSON.parse(e.target.result);
         if (confirm('Import this data? Current progress will be replaced.')) {
           app.state.data = imported;
-          // Ensure adjustmentFactors exist in imported data
+         
           if (!app.state.data.adjustmentFactors) {
             app.state.data.adjustmentFactors = { sq: 1.0, bp: 1.0, dl: 1.0 };
           }
@@ -1214,8 +1184,6 @@ window.resetProgram = function() {
   }
 };
 
-// ==================== PWA SETUP ====================
-// Generate manifest dynamically
 const manifest = {
   "name": "Complete Body Development",
   "short_name": "BodyDev",
@@ -1238,7 +1206,6 @@ const manifest = {
   ]
 };
 
-// Add manifest to page
 const manifestElement = document.createElement('link');
 manifestElement.rel = 'manifest';
 manifestElement.href = 'data:application/manifest+json,' + encodeURIComponent(JSON.stringify(manifest));
@@ -1250,7 +1217,6 @@ iconLink.rel = 'apple-touch-icon';
 iconLink.href = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%234a148c'/%3E%3Cpath d='M30,30 L70,30 L70,70 L30,70 Z' fill='none' stroke='white' stroke-width='8'/%3E%3Ccircle cx='50' cy='40' r='6' fill='white'/%3E%3Ccircle cx='50' cy='60' r='6' fill='white'/%3E%3C/svg%3E";
 document.head.appendChild(iconLink);
 
-// Service Worker for PWA
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('data:application/javascript;base64,' + btoa(`
@@ -1266,7 +1232,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Prompt for installation
 let deferredPrompt;
 const installBtn = document.getElementById('installButton');
 
